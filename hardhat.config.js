@@ -2,6 +2,7 @@ require("@nomiclabs/hardhat-waffle");
 // require('dotenv').config();
 const fs = require("fs")
 const privateKey = fs.readFileSync(".secret").toString()
+const apiKey = fs.readFileSync(".secret1").toString()
 
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   const accounts = await hre.ethers.getSigners();
@@ -27,7 +28,7 @@ module.exports = {
       chainId: 1337
     },
     ropsten: {
-      url: "https://ropsten.infura.io/v3/40d6bdd8c45f48c0bddbd51f0e4e9b0f",
+      url: "https://ropsten.infura.io/v3/${apiKey}",
       accounts: [privateKey]
     }
   }
